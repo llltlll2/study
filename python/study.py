@@ -16,3 +16,7 @@ urllib
 urlから値を持ってくる
 .request().urlopen() 
 色々拾えるっぽい？調査
+
+unittest
+単体テストを行う時のモジュール
+何が違うかを返す
