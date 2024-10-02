@@ -31,3 +31,29 @@ print(d.astype(np.float16))
 
 #スライスは普通にできるっぽい？？？？
 #arrayに対して
+
+py_list1 = [0, 1]
+py_list2 = py_list1[:]
+py_list2[0] = 2
+print(py_list1)
+print(py_list2)
+
+np_array1 = np.array([0,1])
+np_array2 = np_array1[:]
+np_array2[0] = 2
+print(np_array1)
+print(np_array2)
+
+print(np.arange(1, 10 , 2))
+
+#ランダム
+rng = np.random.default_rng(123)
+f = rng.random((3,2))
+print(f)
+print(rng.integers(1,10, size = (3,3)))
+print(rng.uniform(0.0,5.0,size = (2,3)))
+print(rng.uniform(size = (2,3)))#デフォルトは０～１の範囲
+#平均、標準偏差、sizeを引数にして正規分布の乱数を獲得できる
+print(rng.standard_normal(size = (4,2)))
+print(np.zeros(3))#０．０が入った引数の要素数の配列の取得
+print(np.ones(2))#１．０が入った配列の取得
