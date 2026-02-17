@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Study Tracker{% endblock %}</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        nav { margin-bottom: 20px; }
+        .alert { padding: 10px; margin-bottom: 10px; border-radius: 4px; }
+        .alert-good { background-color: #d4edda; color: #155724; }
+        .alert-warning { background-color: #fff3cd; color: #856404; }
+        .alert-critical { background-color: #f8d7da; color: #721c24; }
+        .card { border: 1px solid #ddd; padding: 15px; border-radius: 4px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'tracker:goal_create' %}">新しい目標を設定</a>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

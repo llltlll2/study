@@ -1,0 +1,46 @@
+{% extends 'tracker/base.html' %}
+
+{% block title %}{{ goal.title }} - 詳細{% endblock %}
+
+{% block content %}
+    <h1>{{ goal.title }}</h1>
+
+    <div class="card">
+        <h2>目標概要</h2>
+        <p><strong>目標学習時間:</strong> {{ goal.target_hours }} 時間</p>
+        <p><strong>期間:</strong> {{ goal.start_date }} 〜 {{ goal.end_date }}</p>
+    </div>
+
+    <div class="card alert-{{ progress.status }}">
+        <h2>AI アドバイス</h2>
+        <p class="alert">{{ progress.message }}</p>
+        <ul>
+            <li>残り学習時間: {{ progress.remaining_hours }} 時間</li>
+            <li>残り日数: {{ progress.remaining_days }} 日</li>
+            {% if progress.daily_hours_needed > 0 %}
+            <li>1日あたりの必要学習時間: {{ progress.daily_hours_needed }} 時間</li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>学習記録</h2>
+        <a href="{% url 'tracker:record_create' goal.id %}" class="btn">学習を記録する</a>
+
+        {% if records %}
+            <ul>
+            {% for record in records %}
+                <li>
+                    <strong>{{ record.studied_at|date:"Y/m/d H:i" }}</strong> - {{ record.duration }}分
+                    {% if record.comment %}
+                    <br>
+                    <small>{{ record.comment }}</small>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>まだ学習記録がありません。</p>
+        {% endif %}
+    </div>
+{% endblock %}
