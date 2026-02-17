@@ -1,0 +1,12 @@
+{% extends 'tracker/base.html' %}
+
+{% block title %}学習記録の追加{% endblock %}
+
+{% block content %}
+    <h1>学習記録の追加</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">保存する</button>
+    </form>
+{% endblock %}
